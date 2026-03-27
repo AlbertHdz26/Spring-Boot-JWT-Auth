@@ -1,0 +1,5 @@
+model = "gpt-5"
+temperature = 0.0
+model_instructions_file = "prompts/summarizer.md"
+
+inherit_context = false

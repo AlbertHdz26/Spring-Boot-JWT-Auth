@@ -1,0 +1,33 @@
+[features]
+multi_agent = true
+
+[agents.orchestrator]
+config_file = "orchestrator.toml"
+description = "Main controller"
+
+[agents.planning]
+config_file = "planning.toml"
+
+[agents.architect]
+config_file = "architect.toml"
+
+[agents.coding]
+config_file = "coding.toml"
+
+[agents.review]
+config_file = "review.toml"
+
+[agents.testing]
+config_file = "testing.toml"
+
+[agents.security]
+config_file = "security.toml"
+
+[agents.verification]
+config_file = "verification.toml"
+
+[agents.docs]
+config_file = "docs.toml"
+
+[agents.summarizer]
+config_file = "summarizer.toml"

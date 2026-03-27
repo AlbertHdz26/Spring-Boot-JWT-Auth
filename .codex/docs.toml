@@ -1,0 +1,5 @@
+model = "gpt-5-codex"
+temperature = 0.3
+model_instructions_file = "prompts/docs.md"
+
+inherit_context = false

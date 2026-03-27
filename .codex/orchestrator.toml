@@ -1,0 +1,7 @@
+model = "gpt-5-codex"
+temperature = 0.1
+model_instructions_file = "prompts/orchestrator.md"
+
+# aislamiento
+#context_limit = "strict"
+inherit_context = false

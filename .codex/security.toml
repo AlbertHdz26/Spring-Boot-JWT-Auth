@@ -1,0 +1,5 @@
+model = "gpt-5-codex"
+temperature = 0.2
+model_instructions_file = "prompts/security_agent.md"
+
+inherit_context = false
