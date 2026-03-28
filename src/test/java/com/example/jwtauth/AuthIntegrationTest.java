@@ -35,6 +35,7 @@ class AuthIntegrationTest {
     private static final String LOGOUT_ENDPOINT = "/api/v1/auth/logout";
     private static final String ME_ENDPOINT = "/api/v1/users/me";
     private static final String ADMIN_PING_ENDPOINT = "/api/v1/admin/ping";
+    private static final String HEALTH_ENDPOINT = "/actuator/health";
 
     @Autowired
     private MockMvc mockMvc;
@@ -110,6 +111,13 @@ class AuthIntegrationTest {
                 .andExpect(status().isForbidden());
 
         assertThat(registerResponse.user().role()).isEqualTo("USER");
+    }
+
+    @Test
+    void actuatorHealthShouldBePublic() throws Exception {
+        mockMvc.perform(get(HEALTH_ENDPOINT))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("UP"));
     }
 
     @Test

@@ -11,6 +11,7 @@ API REST con Java 21 y Spring Boot para autenticacion JWT con `access token`, `r
 - PostgreSQL
 - Flyway
 - OpenAPI / Swagger UI
+- Spring Boot Actuator
 - JUnit 5
 
 ## Funcionalidad
@@ -22,6 +23,7 @@ API REST con Java 21 y Spring Boot para autenticacion JWT con `access token`, `r
 - Endpoint autenticado `/api/v1/users/me`
 - Endpoint admin `/api/v1/admin/ping`
 - Bootstrap de admin en perfil `dev`
+- Healthcheck HTTP en `/actuator/health`
 
 ## Estructura
 
@@ -115,6 +117,7 @@ Accesos:
 
 - API: `http://localhost:8080`
 - Swagger UI: `http://localhost:8080/swagger-ui.html`
+- Health: `http://localhost:8080/actuator/health`
 - PostgreSQL: `localhost:5432`
 
 Variables configurables en `.env.example`:
@@ -135,6 +138,7 @@ Mejoras del compose de desarrollo:
 - mantiene PostgreSQL y app en contenedores separados
 - permite cambiar puertos sin editar el YAML
 - sigue exponiendo Swagger porque usa perfil `dev`
+- valida salud de PostgreSQL y de la app
 
 Detener:
 
@@ -168,6 +172,7 @@ Notas:
 - Swagger y `/v3/api-docs` quedan desactivados
 - no publica PostgreSQL en un puerto del host
 - no habilita bootstrap de admin
+- mantiene healthcheck HTTP en `/actuator/health`
 
 Detener:
 
@@ -181,12 +186,29 @@ docker compose --env-file .env.prod -f docker-compose.prod.yml down
 mvn test
 ```
 
+## CI
+
+El repositorio incluye [ci.yml](/home/albert/dev/java/multiagent_codex_01/.github/workflows/ci.yml) para GitHub Actions.
+
+Hace esto en cada `push` a `main` y en cada `pull_request`:
+
+- checkout del codigo
+- Java 21 con `Temurin`
+- cache de dependencias Maven
+- `mvn -B test`
+
 ## Swagger / OpenAPI
 
 Con la app corriendo en `dev`:
 
 - Swagger UI: `http://localhost:8080/swagger-ui.html`
 - OpenAPI JSON: `http://localhost:8080/v3/api-docs`
+
+## Healthcheck
+
+- Health: `http://localhost:8080/actuator/health`
+- En `dev` queda publico para Docker Compose
+- En `prod` sigue publico, pero solo expone el estado general
 
 ## Endpoints principales
 
