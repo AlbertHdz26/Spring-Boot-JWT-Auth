@@ -48,7 +48,7 @@ Usa defaults locales para desarrollo:
 
 ### `test`
 
-Usa H2 en memoria en modo PostgreSQL para correr tests.
+Usa H2 para tests locales rapidos y tiene una integracion opcional con PostgreSQL real via Testcontainers.
 
 ### `prod`
 
@@ -189,6 +189,16 @@ docker compose --env-file .env.prod -f docker-compose.prod.yml down
 mvn test
 ```
 
+Requisito solo para la integracion con PostgreSQL real:
+
+- Docker debe estar disponible porque las pruebas de integracion levantan PostgreSQL con Testcontainers
+
+Para incluir la prueba con PostgreSQL real:
+
+```bash
+RUN_TESTCONTAINERS_TESTS=true mvn test
+```
+
 ## CI
 
 El repositorio incluye [ci.yml](/home/albert/dev/java/multiagent_codex_01/.github/workflows/ci.yml) para GitHub Actions.
@@ -200,6 +210,12 @@ Hace esto en cada `push` a `main` y en cada `pull_request`:
 - cache de dependencias Maven
 - `mvn -B test`
 - `docker build -t jwt-auth:ci .`
+
+Cuando hay `push` a `main`, ademas:
+
+- autentica contra `ghcr.io`
+- publica la imagen Docker en `ghcr.io/<owner>/<repo>`
+- ejecuta tambien la prueba opcional con Testcontainers porque define `RUN_TESTCONTAINERS_TESTS=true`
 
 ## Swagger / OpenAPI
 
