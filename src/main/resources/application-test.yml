@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+  sql:
+    init:
+      mode: never
+
+app:
+  jwt:
+    secret: 01234567890123456789012345678901
+    access-token-expiration: PT15M
+    refresh-token-expiration: P7D
+  admin-bootstrap:
+    enabled: false
+    email: admin@example.com
+    password: ChangeMe123!
