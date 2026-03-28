@@ -1,0 +1,13 @@
+digraph context {
+  rankdir=LR
+  node [shape=box, style=filled, fillcolor="#f0f0f0"]
+  student [label="Estudiante/Desarrollador\nEstudia localmente"]
+  api [label="JWT Auth API\nSpring Boot REST"]
+  swagger [label="Swagger UI\nDocumentación interactiva"]
+  postgres [label="PostgreSQL\nUsuarios & tokens", shape=cylinder]
+
+  student -> api [label="Consume endpoints\nJSON/HTTPS"]
+  student -> swagger [label="Explora API\nInterfaz web"]
+  swagger -> api [label="Lee OpenAPI y ejecuta requests"]
+  api -> postgres [label="Lee y escribe datos\nJPA/JDBC"]
+}

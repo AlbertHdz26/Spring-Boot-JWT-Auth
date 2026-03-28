@@ -1,0 +1,19 @@
+digraph dynamic_me {
+  rankdir=LR
+  node [shape=box, style=filled, fillcolor="#f7f7f7"]
+  client [label="Cliente", fillcolor="#e0f7d4"]
+  jwt_filter [label="JwtAuthenticationFilter"]
+  jwt_service [label="JwtService"]
+  user_details [label="AppUserDetailsService"]
+  user_controller [label="UserController"]
+  user_service [label="UserService"]
+  user_repo [label="UserRepository"]
+
+  client -> jwt_filter [label="1. request w/ Bearer"]
+  jwt_filter -> jwt_service [label="2. validate token"]
+  jwt_filter -> user_details [label="3. load user"]
+  jwt_filter -> user_controller [label="4. proceed"]
+  user_controller -> user_service [label="5. delegate"]
+  user_service -> user_repo [label="6. find user"]
+  user_controller -> client [label="7. return profile"]
+}

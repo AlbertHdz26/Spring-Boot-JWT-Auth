@@ -1,0 +1,20 @@
+digraph dynamic_login {
+  rankdir=LR
+  node [shape=box, style=filled, fillcolor="#f7f7f7"]
+  client [label="Cliente", fillcolor="#e0f7d4"]
+  auth_controller [label="AuthController"]
+  auth_service [label="AuthService"]
+  user_repo [label="UserRepository"]
+  jwt_service [label="JwtService"]
+  refresh_service [label="RefreshTokenService"]
+  refresh_repo [label="RefreshTokenRepository"]
+
+  client -> auth_controller [label="1. POST /auth/login"]
+  auth_controller -> auth_service [label="2. delegate"]
+  auth_service -> user_repo [label="3. find user"]
+  auth_service -> jwt_service [label="4. generate access token"]
+  auth_service -> refresh_service [label="5. generate refresh token"]
+  refresh_service -> refresh_repo [label="6. persist token"]
+  auth_service -> auth_controller [label="7. respond tokens"]
+  auth_controller -> client [label="8. send AuthResponse"]
+}

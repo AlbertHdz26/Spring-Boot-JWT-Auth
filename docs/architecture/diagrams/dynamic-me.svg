@@ -1,0 +1,30 @@
+<svg width="640" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="70" width="140" height="60" fill="#d4f1d4" stroke="#333" />
+  <text x="60" y="105" font-family="Arial" font-size="12">Cliente</text>
+  <rect x="200" y="30" width="140" height="60" fill="#ffe0e0" stroke="#333" />
+  <text x="220" y="60" font-family="Arial" font-size="12">JwtAuthenticationFilter</text>
+  <rect x="370" y="30" width="110" height="60" fill="#ffe0f0" stroke="#333" />
+  <text x="380" y="60" font-family="Arial" font-size="12">JwtService</text>
+  <rect x="520" y="30" width="130" height="60" fill="#e0f7ff" stroke="#333" />
+  <text x="540" y="60" font-family="Arial" font-size="12">AppUserDetailsService</text>
+  <rect x="200" y="110" width="140" height="60" fill="#fff1d4" stroke="#333" />
+  <text x="220" y="140" font-family="Arial" font-size="12">UserController</text>
+  <rect x="370" y="110" width="110" height="60" fill="#e0ffe0" stroke="#333" />
+  <text x="380" y="140" font-family="Arial" font-size="12">UserService</text>
+  <rect x="520" y="110" width="130" height="60" fill="#f7e0ff" stroke="#333" />
+  <text x="540" y="140" font-family="Arial" font-size="12">UserRepository</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#333" />
+    </marker>
+  </defs>
+  <line x1="160" y1="100" x2="200" y2="60" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="340" y1="60" x2="370" y2="60" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="480" y1="60" x2="520" y2="60" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="270" y1="90" x2="270" y2="110" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="420" y1="90" x2="420" y2="110" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="570" y1="90" x2="570" y2="110" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="250" y1="170" x2="120" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="260" y="48" font-family="Arial" font-size="11">Header</text>
+  <text x="260" y="185" font-family="Arial" font-size="11">Profile Response</text>
+</svg>

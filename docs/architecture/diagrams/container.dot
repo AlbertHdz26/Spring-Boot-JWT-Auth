@@ -1,0 +1,16 @@
+digraph container {
+  rankdir=LR
+  node [shape=box, style=filled, fillcolor="#e8f4ff"]
+  student [label="Estudiante/Desarrollador", fillcolor="#d4f1d4"]
+  swagger [label="Swagger UI", fillcolor="#fff1d4"]
+  app [label="Spring Boot App", fillcolor="#ffe0e0", shape=box3d]
+  health [label="Actuator\nHealth Endpoints", fillcolor="#e0f7ff"]
+  db [label="PostgreSQL\nUsuarios y refresh tokens", shape=cylinder, fillcolor="#f7e0ff"]
+
+  student -> swagger [label="Usa", color="#2f4f4f"]
+  student -> app [label="Consume", color="#2f4f4f"]
+  swagger -> app [label="Ejecuta endpoints", color="#2f4f4f"]
+  app -> db [label="Persistencia", color="#2f4f4f"]
+  student -> health [label="Consulta salud", style=dashed]
+  health -> app [label="Expone estado", style=dashed]
+}

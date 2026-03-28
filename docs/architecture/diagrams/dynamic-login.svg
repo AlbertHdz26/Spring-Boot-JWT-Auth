@@ -1,0 +1,31 @@
+<svg width="640" height="200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="60" width="140" height="60" fill="#d4f1d4" stroke="#333" />
+  <text x="40" y="95" font-family="Arial" font-size="12">Cliente</text>
+  <rect x="190" y="30" width="130" height="60" fill="#ffe0e0" stroke="#333" />
+  <text x="200" y="60" font-family="Arial" font-size="12">AuthController</text>
+  <rect x="360" y="30" width="130" height="60" fill="#ffe0f0" stroke="#333" />
+  <text x="380" y="60" font-family="Arial" font-size="12">AuthService</text>
+  <rect x="510" y="10" width="110" height="60" fill="#f7e0ff" stroke="#333" />
+  <text x="520" y="40" font-family="Arial" font-size="12">JwtService</text>
+  <rect x="510" y="110" width="110" height="60" fill="#e0f7ff" stroke="#333" />
+  <text x="530" y="140" font-family="Arial" font-size="12">RefreshTokenService</text>
+  <rect x="360" y="110" width="130" height="60" fill="#e0ffe0" stroke="#333" />
+  <text x="380" y="140" font-family="Arial" font-size="12">UserRepository</text>
+  <rect x="190" y="110" width="130" height="60" fill="#fff1d4" stroke="#333" />
+  <text x="210" y="140" font-family="Arial" font-size="12">Client Response</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#333" />
+    </marker>
+  </defs>
+  <line x1="160" y1="90" x2="190" y2="60" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="320" y1="60" x2="360" y2="60" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="390" y1="90" x2="510" y2="40" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="510" y1="70" x2="520" y2="40" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="450" y1="90" x2="510" y2="140" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="260" y1="90" x2="260" y2="140" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="260" y1="170" x2="120" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="240" y1="80" x2="240" y2="120" stroke="#333" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="270" y="50" font-family="Arial" font-size="11">Request</text>
+  <text x="280" y="155" font-family="Arial" font-size="11">Response</text>
+</svg>
