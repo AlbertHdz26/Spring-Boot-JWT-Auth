@@ -129,6 +129,13 @@ Variables configurables en `.env.example`:
 - `ADMIN_EMAIL`
 - `ADMIN_PASSWORD`
 
+Mejoras del compose de desarrollo:
+
+- usa `env_file: .env`
+- mantiene PostgreSQL y app en contenedores separados
+- permite cambiar puertos sin editar el YAML
+- sigue exponiendo Swagger porque usa perfil `dev`
+
 Detener:
 
 ```bash
@@ -139,6 +146,33 @@ Detener y borrar volumen de datos:
 
 ```bash
 docker compose down -v
+```
+
+## Ejecutar con Docker Compose para prod
+
+Primero crea tu archivo `.env.prod`:
+
+```bash
+cp .env.prod.example .env.prod
+```
+
+Luego levanta la variante de produccion:
+
+```bash
+docker compose --env-file .env.prod -f docker-compose.prod.yml up --build -d
+```
+
+Notas:
+
+- usa perfil `prod`
+- Swagger y `/v3/api-docs` quedan desactivados
+- no publica PostgreSQL en un puerto del host
+- no habilita bootstrap de admin
+
+Detener:
+
+```bash
+docker compose --env-file .env.prod -f docker-compose.prod.yml down
 ```
 
 ## Ejecutar tests

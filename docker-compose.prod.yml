@@ -1,45 +1,38 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: jwt-auth-postgres
-    env_file:
-      - .env
+    container_name: jwt-auth-postgres-prod
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_prod_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
       start_period: 10s
+    restart: unless-stopped
 
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: jwt-auth-app
-    env_file:
-      - .env
+    container_name: jwt-auth-app-prod
     depends_on:
       postgres:
         condition: service_healthy
     environment:
-      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-dev}
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
       JWT_SECRET: ${JWT_SECRET}
-      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@example.com}
-      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-ChangeMe123!}
     ports:
       - "${APP_PORT:-8080}:8080"
     restart: unless-stopped
 
 volumes:
-  postgres_data:
+  postgres_prod_data:
