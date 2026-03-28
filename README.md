@@ -92,6 +92,55 @@ mvn spring-boot:run -Dspring-boot.run.profiles=dev
 
 La aplicacion arranca en `http://localhost:8080`.
 
+## Ejecutar con Docker Compose
+
+Esto levanta dos contenedores:
+
+- `app`: la aplicacion Spring Boot
+- `postgres`: la base de datos PostgreSQL
+
+Primero crea tu archivo `.env` a partir del ejemplo:
+
+```bash
+cp .env.example .env
+```
+
+Comando:
+
+```bash
+docker compose up --build
+```
+
+Accesos:
+
+- API: `http://localhost:8080`
+- Swagger UI: `http://localhost:8080/swagger-ui.html`
+- PostgreSQL: `localhost:5432`
+
+Variables configurables en `.env.example`:
+
+- `POSTGRES_DB`
+- `POSTGRES_USER`
+- `POSTGRES_PASSWORD`
+- `POSTGRES_PORT`
+- `APP_PORT`
+- `SPRING_PROFILES_ACTIVE`
+- `JWT_SECRET`
+- `ADMIN_EMAIL`
+- `ADMIN_PASSWORD`
+
+Detener:
+
+```bash
+docker compose down
+```
+
+Detener y borrar volumen de datos:
+
+```bash
+docker compose down -v
+```
+
 ## Ejecutar tests
 
 ```bash
