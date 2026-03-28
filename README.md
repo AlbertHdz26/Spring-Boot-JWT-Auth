@@ -217,6 +217,23 @@ Cuando hay `push` a `main`, ademas:
 - publica la imagen Docker en `ghcr.io/<owner>/<repo>`
 - ejecuta tambien la prueba opcional con Testcontainers porque define `RUN_TESTCONTAINERS_TESTS=true`
 
+## Releases
+
+El repositorio incluye [release.yml](/home/albert/dev/java/multiagent_codex_01/.github/workflows/release.yml).
+
+Funcionamiento:
+
+- si haces `push` de un tag como `v1.0.0`, GitHub crea una release
+- las notas de la release se generan automaticamente
+- tambien puedes dispararlo manualmente con `workflow_dispatch`
+
+Flujo recomendado:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
 ## Swagger / OpenAPI
 
 Con la app corriendo en `dev`:
