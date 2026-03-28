@@ -2,7 +2,15 @@ spring:
   config:
     activate:
       on-profile: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jwt_auth_db
+    username: jwt_app
+    password: ${DB_PASSWORD:change-me-dev-password}
 
 app:
+  jwt:
+    secret: ${JWT_SECRET:01234567890123456789012345678901}
   admin-bootstrap:
     enabled: true
+    email: ${ADMIN_EMAIL:admin@example.com}
+    password: ${ADMIN_PASSWORD:ChangeMe123!}

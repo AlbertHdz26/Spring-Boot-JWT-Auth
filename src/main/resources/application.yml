@@ -2,9 +2,9 @@ spring:
   application:
     name: jwt-auth
   datasource:
-    url: jdbc:postgresql://localhost:5432/jwt_auth_db
-    username: jwt_app
-    password: ${DB_PASSWORD:change-me-dev-password}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     open-in-view: false
     hibernate:
@@ -23,10 +23,10 @@ springdoc:
 
 app:
   jwt:
-    secret: ${JWT_SECRET:01234567890123456789012345678901}
+    secret: ${JWT_SECRET}
     access-token-expiration: PT15M
     refresh-token-expiration: P7D
   admin-bootstrap:
     enabled: false
-    email: ${ADMIN_EMAIL:admin@example.com}
-    password: ${ADMIN_PASSWORD:ChangeMe123!}
+    email: ${ADMIN_EMAIL:}
+    password: ${ADMIN_PASSWORD:}
