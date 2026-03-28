@@ -36,6 +36,8 @@ class AuthIntegrationTest {
     private static final String ME_ENDPOINT = "/api/v1/users/me";
     private static final String ADMIN_PING_ENDPOINT = "/api/v1/admin/ping";
     private static final String HEALTH_ENDPOINT = "/actuator/health";
+    private static final String LIVENESS_ENDPOINT = "/actuator/health/liveness";
+    private static final String READINESS_ENDPOINT = "/actuator/health/readiness";
 
     @Autowired
     private MockMvc mockMvc;
@@ -116,6 +118,20 @@ class AuthIntegrationTest {
     @Test
     void actuatorHealthShouldBePublic() throws Exception {
         mockMvc.perform(get(HEALTH_ENDPOINT))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("UP"));
+    }
+
+    @Test
+    void actuatorLivenessShouldBePublic() throws Exception {
+        mockMvc.perform(get(LIVENESS_ENDPOINT))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.status").value("UP"));
+    }
+
+    @Test
+    void actuatorReadinessShouldBePublic() throws Exception {
+        mockMvc.perform(get(READINESS_ENDPOINT))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.status").value("UP"));
     }

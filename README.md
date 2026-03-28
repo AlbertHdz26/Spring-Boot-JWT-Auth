@@ -24,6 +24,7 @@ API REST con Java 21 y Spring Boot para autenticacion JWT con `access token`, `r
 - Endpoint admin `/api/v1/admin/ping`
 - Bootstrap de admin en perfil `dev`
 - Healthcheck HTTP en `/actuator/health`
+- Probes de Actuator en `/actuator/health/liveness` y `/actuator/health/readiness`
 
 ## Estructura
 
@@ -139,6 +140,7 @@ Mejoras del compose de desarrollo:
 - permite cambiar puertos sin editar el YAML
 - sigue exponiendo Swagger porque usa perfil `dev`
 - valida salud de PostgreSQL y de la app
+- usa `readiness` de Actuator para marcar la app como lista
 
 Detener:
 
@@ -173,6 +175,7 @@ Notas:
 - no publica PostgreSQL en un puerto del host
 - no habilita bootstrap de admin
 - mantiene healthcheck HTTP en `/actuator/health`
+- usa `readiness` para validar que la app ya puede recibir trafico
 
 Detener:
 
@@ -196,6 +199,7 @@ Hace esto en cada `push` a `main` y en cada `pull_request`:
 - Java 21 con `Temurin`
 - cache de dependencias Maven
 - `mvn -B test`
+- `docker build -t jwt-auth:ci .`
 
 ## Swagger / OpenAPI
 
@@ -207,6 +211,8 @@ Con la app corriendo en `dev`:
 ## Healthcheck
 
 - Health: `http://localhost:8080/actuator/health`
+- Liveness: `http://localhost:8080/actuator/health/liveness`
+- Readiness: `http://localhost:8080/actuator/health/readiness`
 - En `dev` queda publico para Docker Compose
 - En `prod` sigue publico, pero solo expone el estado general
 
